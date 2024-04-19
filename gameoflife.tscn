@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://5e4cirim31sf"]
+
+[ext_resource type="Script" path="res://SpinCube.gd" id="1_fbg3n"]
+[ext_resource type="Script" path="res://CameraController.gd" id="1_uha4v"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_lh603"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_r5sp7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j7rky"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gqf6a"]
+material = SubResource("StandardMaterial3D_j7rky")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56165, 2.52225)
+script = ExtResource("1_uha4v")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.962791, 0.270248, 0, -0.270248, 0.962791, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("SphereShape3D_lh603")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(7.21844, 0, 0, 0, 1, 0, 0, 0, 16.9553, 0.013833, -2.38419e-07, 0.0214634)
+mesh = SubResource("PlaneMesh_r5sp7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.809335, 0.587347, 0, -0.587347, 0.809335, -0.103651, 2.59679, 4.50901)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.955144, 0)
+mesh = SubResource("BoxMesh_gqf6a")
+script = ExtResource("1_fbg3n")
