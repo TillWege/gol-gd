@@ -2,12 +2,17 @@ extends CharacterBody3D
 const SPEED = 5.0
 
 @onready var camera_3d = $Camera3D
-@export var mouse_sensitivity : float = 0.1
+@export var mouse_sensitivity: float = 0.1
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
-func _physics_process(delta):
+func _physics_process(_delta):
+	if Input.is_action_just_pressed("pause"):
+		if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		else:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	# Handle jump.
 	if Input.is_action_pressed("Up"):
 		velocity.y = SPEED
@@ -28,7 +33,7 @@ func _physics_process(delta):
 		velocity_plane.x = move_toward(velocity.x, 0, SPEED)
 		velocity_plane.y = move_toward(velocity.z, 0, SPEED)
 		
-	velocity_plane = velocity_plane.rotated(-camera_3d.rotation.y)
+	velocity_plane = velocity_plane.rotated( - camera_3d.rotation.y)
 	
 	velocity.x = velocity_plane.x
 	velocity.z = velocity_plane.y

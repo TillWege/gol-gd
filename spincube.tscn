@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://crdrbv4qyvtcf"]
+
+[ext_resource type="Script" path="res://SpinCube.gd" id="1_iykjc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oqr0f"]
+albedo_color = Color(0.531007, 0.790035, 0.888395, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gqf6a"]
+material = SubResource("StandardMaterial3D_oqr0f")
+
+[node name="Mesh" type="MeshInstance3D"]
+mesh = SubResource("BoxMesh_gqf6a")
+script = ExtResource("1_iykjc")
